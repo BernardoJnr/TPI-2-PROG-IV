@@ -5,8 +5,8 @@ const cors = require('cors');
 app.use(cors());
 
 const vehicles = [
-  { plate: "ABC1D34", model: "Carro 1", status: "Normal", chassi: "123456789", motor: "MTR001" },
-  { plate: "XYZ9876", model: "Carro 2", status: "Roubado", chassi: "987654321", motor: "MTR002" },
+  { plate: "ABC1D34", model: "Honda Civic", status: "Normal", chassi: "123456789", motor: "MTR001" },
+  { plate: "XYZ9876", model: "Toyota Etios", status: "Roubado", chassi: "987654321", motor: "MTR002" },
 ];
 
 function searchIgnoreCase(array, key, value) {
