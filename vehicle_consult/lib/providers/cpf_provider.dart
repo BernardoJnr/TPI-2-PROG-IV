@@ -26,4 +26,10 @@ class CpfProvider with ChangeNotifier {
       notifyListeners();
     }
   }
+
+  void clearData() {
+    _cpfData = null;
+    _errorMessage = null;
+    notifyListeners();
+  }
 }

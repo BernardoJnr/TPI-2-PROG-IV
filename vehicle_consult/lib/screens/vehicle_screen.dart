@@ -38,6 +38,8 @@ class _VehicleScreenState extends State<VehicleScreen> {
                   icon: const Icon(Icons.logout),
                   color: Colors.white,
                   onPressed: () {
+                    Provider.of<VehicleProvider>(context, listen: false)
+                        .clearData();
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(builder: (context) => LoginScreen()),
                     );

@@ -35,6 +35,8 @@ class _CpfScreenState extends State<CpfScreen> {
                   icon: const Icon(Icons.logout),
                   color: Colors.white,
                   onPressed: () {
+                    Provider.of<CpfProvider>(context, listen: false)
+                        .clearData();
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(builder: (context) => LoginScreen()),
                     );

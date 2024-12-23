@@ -26,4 +26,10 @@ class VehicleProvider with ChangeNotifier {
     }
     notifyListeners();
   }
+
+  void clearData() {
+    _vehicle = null;
+    _errorMessage = null;
+    notifyListeners();
+  }
 }
