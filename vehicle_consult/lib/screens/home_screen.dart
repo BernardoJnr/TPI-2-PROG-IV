@@ -45,13 +45,13 @@ class HomeScreen extends StatelessWidget {
   Widget _buildConsultaCard(
       BuildContext context, String title, IconData icon, VoidCallback onTap) {
     return Card(
-      color: Colors.grey[800], // Cor do card
+      color: Colors.grey[800],
       child: InkWell(
         onTap: onTap,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, size: 48.0, color: Colors.blue), // Ícone azul
+            Icon(icon, size: 48.0, color: Colors.blue),
             const SizedBox(height: 16.0),
             Text(
               title,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vehicle_consult/theme/style.dart';
-import 'package:vehicle_consult/widgets/primary_button.dart';
+import 'package:vehicle_consult/widgets/card_sonsult.dart';
 
 import '../providers/vehicle_provider.dart';
 import '../widgets/vehicle_card.dart';
@@ -43,95 +43,52 @@ class _VehicleScreenState extends State<VehicleScreen> {
                 ),
               ],
             ),
-            Card(
-              color: cardColor,
-              shape: RoundedRectangleBorder(
-                side: const BorderSide(color: Colors.white),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    const Text(
-                      'Consulta de Veículos',
-                      style: TextStyle(color: Colors.black, fontSize: 20),
-                    ),
-                    const SizedBox(height: 20),
-                    TextField(
-                      controller: _searchController,
-                      decoration: const InputDecoration(
-                        labelText: 'Digite a placa, chassi ou motor',
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    DropdownButton<String>(
-                      borderRadius: BorderRadius.circular(10),
-                      dropdownColor: Colors.white,
-                      style: TextStyle(fontSize: 15),
-                      value: _searchType,
-                      onChanged: (value) {
-                        setState(() {
-                          _searchType = value!;
-                        });
-                      },
-                      items: const [
-                        DropdownMenuItem(
-                            value: 'plate',
-                            child: Text(
-                              'Buscar por Placa',
-                              style: TextStyle(color: Colors.black),
-                            )),
-                        DropdownMenuItem(
-                            value: 'chassi',
-                            child: Text(
-                              'Buscar por Chassi',
-                              style: TextStyle(color: Colors.black),
-                            )),
-                        DropdownMenuItem(
-                            value: 'motor',
-                            child: Text(
-                              'Buscar por Motor',
-                              style: TextStyle(color: Colors.black),
-                            )),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment
-                          .spaceAround, // Distribui os botões com espaçamento
-                      children: [
-                        PrimaryButton(
-                          onPressed: () {
-                            setState(() {
-                              _searchController.clear();
-                            });
-                          },
-                          text: 'Limpar',
-                          isLoading: false,
-                        ),
-                        PrimaryButton(
-                          onPressed: () {
-                            provider.searchVehicle(
-                                _searchController.text, _searchType);
-                          },
-                          text: 'Buscar',
-                          isLoading: false,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+            buildConsultaCard(
+              context: context,
+              searchController: _searchController,
+              title: 'Consulta de Veículos',
+              labelText: 'Digite a placa, chassi ou motor',
+              onBuscarPressed: () {
+                provider.searchVehicle(_searchController.text, _searchType);
+              },
+              onLimparPressed: () {
+                setState(() {
+                  _searchController.clear();
+                });
+              },
+              isLoading: false,
+            ),
+            const SizedBox(height: 20),
+            DropdownButton<String>(
+              borderRadius: BorderRadius.circular(10),
+              dropdownColor: Colors.white,
+              style: TextStyle(fontSize: 15),
+              value: _searchType,
+              onChanged: (value) {
+                setState(() {
+                  _searchType = value!;
+                });
+              },
+              items: const [
+                DropdownMenuItem(
+                    value: 'plate',
+                    child: Text(
+                      'Buscar por Placa',
+                      style: TextStyle(color: Colors.black),
+                    )),
+                DropdownMenuItem(
+                    value: 'chassi',
+                    child: Text(
+                      'Buscar por Chassi',
+                      style: TextStyle(color: Colors.black),
+                    )),
+                DropdownMenuItem(
+                    value: 'motor',
+                    child: Text(
+                      'Buscar por Motor',
+                      style: TextStyle(color: Colors.black),
+                    )),
+              ],
             ),
             const SizedBox(height: 40),
             if (provider.errorMessage != null)

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vehicle_consult/theme/style.dart';
-import 'package:vehicle_consult/widgets/primary_button.dart';
+import 'package:vehicle_consult/widgets/card_sonsult.dart';
 
 import '../providers/cpf_provider.dart';
 import '../widgets/cpf_card.dart';
@@ -42,62 +42,20 @@ class _CpfScreenState extends State<CpfScreen> {
                 ),
               ],
             ),
-            Card(
-              color: cardColor,
-              shape: RoundedRectangleBorder(
-                side: const BorderSide(color: Colors.white),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    const Text(
-                      'Consulta por CPF',
-                      style: TextStyle(color: Colors.black, fontSize: 20),
-                    ),
-                    const SizedBox(height: 40),
-                    TextField(
-                      controller: _searchController,
-                      decoration: const InputDecoration(
-                        prefixIconColor: Colors.white,
-                        labelText: 'Digite o CPF',
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        PrimaryButton(
-                          onPressed: () {
-                            setState(() {
-                              _searchController.clear();
-                            });
-                          },
-                          text: 'Limpar',
-                          isLoading: false,
-                        ),
-                        PrimaryButton(
-                          onPressed: () {
-                            cpfProvider.searchCpf(_searchController.text);
-                          },
-                          text: 'Buscar',
-                          isLoading: cpfProvider.isLoading,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+            buildConsultaCard(
+              context: context,
+              searchController: _searchController,
+              title: 'Consulta por CPF',
+              labelText: 'Digite o CPF',
+              onBuscarPressed: () {
+                cpfProvider.searchCpf(_searchController.text);
+              },
+              onLimparPressed: () {
+                setState(() {
+                  _searchController.clear();
+                });
+              },
+              isLoading: cpfProvider.isLoading,
             ),
             const SizedBox(height: 30),
             if (cpfProvider.errorMessage != null)

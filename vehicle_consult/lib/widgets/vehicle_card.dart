@@ -16,7 +16,8 @@ class VehicleCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Modelo: ${vehicle.model}', style: TextStyle(fontSize: 18)),
+            Text('Modelo: ${vehicle.model}',
+                style: const TextStyle(fontWeight: FontWeight.bold)),
             Text('Status: ${vehicle.status}'),
             Text('Chassi: ${vehicle.chassi}'),
             Text('Motor: ${vehicle.motor}'),

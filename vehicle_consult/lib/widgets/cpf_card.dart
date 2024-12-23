@@ -8,7 +8,7 @@ class CpfCard extends StatelessWidget {
   const CpfCard({Key? key, required this.cpfData}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     return Card(
       color: cardColor,
       child: Padding(
