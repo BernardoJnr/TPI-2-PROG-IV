@@ -17,7 +17,7 @@ class PrimaryButton extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: const Color.fromARGB(255, 23, 130, 163),
-        minimumSize: const Size(200, 50),
+        minimumSize: const Size(150, 50),
         textStyle: const TextStyle(fontSize: 18),
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
