@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vehicle_consult/screens/cpf_screen.dart';
 import 'package:vehicle_consult/screens/vehicle_screen.dart';
+import 'package:vehicle_consult/widgets/card_sonsult.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -24,38 +25,17 @@ class HomeScreen extends StatelessWidget {
           mainAxisSpacing: 16.0,
           crossAxisSpacing: 16.0,
           children: [
-            _buildConsultaCard(
+            buildCardHome(
               context,
               'Consultar Pessoas',
               Icons.person,
               () => _navigateTo(context, CpfScreen()),
             ),
-            _buildConsultaCard(
+            buildCardHome(
               context,
               'Consultar Veículos',
               Icons.directions_car,
               () => _navigateTo(context, VehicleScreen()),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildConsultaCard(
-      BuildContext context, String title, IconData icon, VoidCallback onTap) {
-    return Card(
-      color: Colors.grey[800],
-      child: InkWell(
-        onTap: onTap,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon, size: 48.0, color: Colors.blue),
-            const SizedBox(height: 16.0),
-            Text(
-              title,
-              style: const TextStyle(color: Colors.white),
             ),
           ],
         ),

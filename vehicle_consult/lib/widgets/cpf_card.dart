@@ -5,10 +5,10 @@ import '../models/cpf.dart';
 class CpfCard extends StatelessWidget {
   final CpfData cpfData;
 
-  const CpfCard({Key? key, required this.cpfData}) : super(key: key);
+  const CpfCard({super.key, required this.cpfData});
 
   @override
-  Widget build(BuildContext context) { 
+  Widget build(BuildContext context) {
     return Card(
       color: cardColor,
       child: Padding(

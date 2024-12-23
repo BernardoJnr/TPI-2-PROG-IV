@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+
 app.use(cors());
 
 const vehicles = [
@@ -8,12 +9,10 @@ const vehicles = [
   { plate: "XYZ9876", model: "Carro 2", status: "Roubado", chassi: "987654321", motor: "MTR002" },
 ];
 
-// Função para busca insensível a maiúsculas/minúsculas
 function searchIgnoreCase(array, key, value) {
   return array.find(item => item[key]?.toLowerCase() === value.toLowerCase());
 }
 
-// Busca por placa
 app.get('/vehicles/:plate', (req, res) => {
   const plate = req.params.plate;
   const vehicle = searchIgnoreCase(vehicles, 'plate', plate);
@@ -24,7 +23,6 @@ app.get('/vehicles/:plate', (req, res) => {
   }
 });
 
-// Busca por chassi
 app.get('/vehicles/chassi/:chassi', (req, res) => {
   const chassi = req.params.chassi;
   const vehicle = searchIgnoreCase(vehicles, 'chassi', chassi);
@@ -35,7 +33,6 @@ app.get('/vehicles/chassi/:chassi', (req, res) => {
   }
 });
 
-// Busca por motor
 app.get('/vehicles/motor/:motor', (req, res) => {
   const motor = req.params.motor;
   const vehicle = searchIgnoreCase(vehicles, 'motor', motor);
@@ -47,11 +44,10 @@ app.get('/vehicles/motor/:motor', (req, res) => {
 });
 
 const cpfs = {
-  "12345678900": { nome: "João da Silva", dataNascimento: "1990-01-01", sexo: "Masculino", situacaoCadastral: "Ativo" },
-  "98765432100": { nome: "Maria Oliveira", dataNascimento: "1985-05-10", sexo: "Feminino", situacaoCadastral: "Ativo" },
+  "12345678900": { nome: "João da Silva", dataNascimento: "01/02/1990", sexo: "Masculino", situacaoCadastral: "Ativo" },
+  "98765432100": { nome: "Maria Oliveira", dataNascimento: "10/05/1985", sexo: "Feminino", situacaoCadastral: "Ativo" },
 };
 
-// Busca por CPF
 app.get('/cpf/:cpf', (req, res) => {
   const cpf = req.params.cpf;
   const cpfData = cpfs[cpf];

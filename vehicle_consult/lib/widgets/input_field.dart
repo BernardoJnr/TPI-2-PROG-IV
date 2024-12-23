@@ -8,14 +8,14 @@ class InputField extends StatefulWidget {
   final String? Function(String?)? validator;
 
   const InputField({
-    Key? key,
+    super.key,
     required this.controller,
     required this.hintText,
     required this.icon,
     this.obscureText = false,
     this.validator,
     required Null Function() onVisibilityPressed,
-  }) : super(key: key);
+  });
 
   @override
   State<InputField> createState() => _InputFieldState();

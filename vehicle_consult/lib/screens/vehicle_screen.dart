@@ -8,6 +8,8 @@ import '../widgets/vehicle_card.dart';
 import 'login_screen.dart';
 
 class VehicleScreen extends StatefulWidget {
+  const VehicleScreen({super.key});
+
   @override
   _VehicleScreenState createState() => _VehicleScreenState();
 }

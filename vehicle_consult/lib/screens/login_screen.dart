@@ -7,6 +7,8 @@ import 'package:vehicle_consult/widgets/input_field.dart';
 import 'package:vehicle_consult/widgets/primary_button.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }

@@ -1,6 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:vehicle_consult/widgets/primary_button.dart';
 
+Widget buildCardHome(
+      BuildContext context, String title, IconData icon, VoidCallback onTap) {
+    return Card(
+      color: Colors.grey[800],
+      child: InkWell(
+        onTap: onTap,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: 48.0, color: Colors.blue),
+            const SizedBox(height: 16.0),
+            Text(
+              title,
+              style: const TextStyle(color: Colors.white),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+
+
 Widget buildConsultaCard(
     {required BuildContext context,
     required TextEditingController searchController,
@@ -29,15 +52,6 @@ Widget buildConsultaCard(
             decoration: InputDecoration(
               prefixIconColor: Colors.white,
               labelText: labelText,
-              border: const OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black),
-              ),
-              enabledBorder: const OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black),
-              ),
-              focusedBorder: const OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black),
-              ),
             ),
           ),
           const SizedBox(height: 20),
