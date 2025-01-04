@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => CpfProvider()),
       ],
       child: MaterialApp(
-        title: 'Consulta de Veículos',
+        title: 'TPI2 Consultas',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,

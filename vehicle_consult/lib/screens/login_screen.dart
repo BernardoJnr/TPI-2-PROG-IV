@@ -61,11 +61,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Image.asset(
                     'assets/image/logo.png',
-                    height: 180,
+                    height: 230,
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
                   const Text(
-                    'Consulta Veicular',
+                    'TPI2 Consultas',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 24,
